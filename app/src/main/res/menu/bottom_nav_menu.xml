@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeIcon"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+
+    <item
+        android:id="@+id/mapsIcon"
+        android:title="Maps"
+        android:icon="@drawable/ic_maps"/>
+
+    <item
+        android:id="@+id/qrIcon"
+        android:title="QR Scanner"
+        android:icon="@drawable/ic_qr"/>
+
+    <item
+        android:id="@+id/cartIcon"
+        android:title="Cart"
+        android:icon="@drawable/btn_2"/>
+    <item
+        android:id="@+id/profileIcon"
+        android:title="Profile"
+        android:icon="@drawable/btn_5"/>
+
+
+</menu>
