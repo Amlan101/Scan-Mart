@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "528964009248",
+    "project_id": "scan-mart",
+    "storage_bucket": "scan-mart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528964009248:android:7aa86c415f125bd2bbab45",
+        "android_client_info": {
+          "package_name": "com.example.scanmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkrCN0sObNao086kqLDU5Ut_ZN2AIiuPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

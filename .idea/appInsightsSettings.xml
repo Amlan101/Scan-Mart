@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.scanmart" />
+                  <option name="mobileSdkAppId" value="1:528964009248:android:7aa86c415f125bd2bbab45" />
+                  <option name="projectId" value="scan-mart" />
+                  <option name="projectNumber" value="528964009248" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
