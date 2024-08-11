@@ -9,12 +9,7 @@
     <item
         android:id="@+id/mapsIcon"
         android:title="Maps"
-        android:icon="@drawable/ic_maps"/>
-
-    <item
-        android:id="@+id/qrIcon"
-        android:title="QR Scanner"
-        android:icon="@drawable/ic_qr"/>
+        android:icon="@drawable/ic_map"/>
 
     <item
         android:id="@+id/cartIcon"

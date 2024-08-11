@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background color of the BottomNavigationView -->
+    <item android:drawable="@color/black3" />
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/black3" />
+            <path
+                android:fillColor="@android:color/transparent"
+                android:pathData="M0,0 h100 v50 a50,50 0 0,1 100,0 v-50 h100 v100 h-300 z" />
+        </shape>
+    </item>
+
+</layer-list>
