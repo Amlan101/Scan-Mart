@@ -21,11 +21,3 @@ class IntroActivity : AppCompatActivity() {
 
     }
 }
-
-/*
-1. Home
-2. Map
--> QR scanner
-3. Cart
-4. Profile
-*/
