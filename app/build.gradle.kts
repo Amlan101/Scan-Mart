@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -55,5 +55,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.12.0")
-    ksp ("com.github.bumptech.glide:compiler:4.12.0")
+    kapt("com.github.bumptech.glide:compiler:4.12.0")
 }
