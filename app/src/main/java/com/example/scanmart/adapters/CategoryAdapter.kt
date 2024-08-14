@@ -31,9 +31,9 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(
 
     override fun onBindViewHolder(holder: CategoryAdapter.CategoryViewHolder, position: Int) {
         val category = differ.currentList[position]
-        holder.categoryNameTextView.text = category.name
+        holder.categoryNameTextView.text = category.Name
         Glide.with(holder.itemView.context)
-            .load(category.imagePath)
+            .load(category.ImagePath)
             .into(holder.categoryImageView)
 
         holder.itemView.setOnClickListener {
@@ -50,7 +50,7 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(
 
     private val differCallBack = object: DiffUtil.ItemCallback<CategoryDomain>(){
         override fun areItemsTheSame(oldItem: CategoryDomain, newItem: CategoryDomain): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.Id == newItem.Id
         }
 
         override fun areContentsTheSame(oldItem: CategoryDomain, newItem: CategoryDomain): Boolean {

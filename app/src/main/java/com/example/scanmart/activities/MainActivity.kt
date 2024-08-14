@@ -23,16 +23,16 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        // Initialize Firebase Database reference
+        val myRef = database.getReference("Category")
+        Log.d("Reference", "Database Reference: $myRef")
 //        initLocation()
-        initCategoryList()
+        initCategoryList(myRef)
 
     }
 
-    private fun initCategoryList() {
-
-        // Initialize Firebase Database reference
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("Category")
+    private fun initCategoryList(myRef: DatabaseReference) {
 
         binding.categoryProgressBar.visibility = View.VISIBLE
 
@@ -57,7 +57,7 @@ class MainActivity : BaseActivity() {
                         category?.let {
                             list.add(it)
 
-                            Log.d("FirebaseData", "Name: ${it.name}, ID: ${it.id}, ImagePath: ${it.imagePath}")
+                            Log.d("FirebaseData", "Name: ${it.Name}, ID: ${it.Id}, ImagePath: ${it.ImagePath}")
                         }
                     }
 
