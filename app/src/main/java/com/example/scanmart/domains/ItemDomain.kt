@@ -1,13 +1,12 @@
 package com.example.scanmart.domains
 
 data class ItemDomain(
-    var title: String = "",
-    var imagePath: String = "",
-    var description: String = "",
-    var price: Double = 0.0,
-    var id: Int = 0,
-    var stars: Double = 0.0,
-    var categoryId: Int = 0,
-    var locationId: Int = 0
-
+    var Title: String = "",
+    var ImagePath: String = "",
+    var Description: String = "",
+    var Price: Double = 0.0,
+    var Id: Int = 0,
+    var Stars: Double = 0.0,
+    var CategoryId: Int = 0,
+    var LocationId: Int = 0
 )

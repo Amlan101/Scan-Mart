@@ -3,15 +3,14 @@ package com.example.scanmart.activities
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.scanmart.adapters.BestDealsAdapter
 import com.example.scanmart.adapters.CategoryAdapter
 import com.example.scanmart.databinding.ActivityMainBinding
 import com.example.scanmart.domains.CategoryDomain
+import com.example.scanmart.domains.ItemDomain
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class MainActivity : BaseActivity() {
@@ -23,16 +22,68 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        // Initialize Firebase Database reference
-        val myRef = database.getReference("Category")
-        Log.d("Reference", "Database Reference: $myRef")
 //        initLocation()
-        initCategoryList(myRef)
+        initCategoryList()
+        initBestDealsList()
 
     }
 
-    private fun initCategoryList(myRef: DatabaseReference) {
+    private fun initBestDealsList() {
+
+        // Initialize Firebase Database reference
+        val myRef = database.getReference("Items")
+
+        binding.bestDealsProgressBar.visibility = View.VISIBLE
+
+        val list = ArrayList<ItemDomain>()
+        val bestDealsAdapter = BestDealsAdapter()
+        binding.bestDealsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = bestDealsAdapter
+        }
+
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                // Checking if the snapshot has any data
+                if (snapshot.exists()) {
+                    list.clear() // Clear the list to avoid duplicates
+
+                    // Iterate through the snapshot to retrieve data
+                    for (dataSnapshot in snapshot.children) {
+                        val item = dataSnapshot.getValue(ItemDomain::class.java)
+                        item?.let {
+                            list.add(it)
+                            Log.d(
+                                "FirebaseData",
+                                "Name: ${it.Title}, ID: ${it.Id}, ImagePath: ${it.ImagePath}"
+                            )
+                        }
+                    }
+
+                    binding.bestDealsProgressBar.visibility = View.GONE
+
+                    // Update the adapter with the new list
+                    if (list.isNotEmpty()) {
+                        bestDealsAdapter.differ.submitList(list)
+                    }
+                } else {
+                    binding.bestDealsProgressBar.visibility = View.GONE
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                binding.bestDealsProgressBar.visibility = View.GONE
+                Log.e("Firebase", "Error fetching data", error.toException())
+            }
+
+        })
+    }
+
+    private fun initCategoryList() {
+
+        val myRef = database.getReference("Category")
+        Log.d("Reference", "Database Reference: $myRef")
 
         binding.categoryProgressBar.visibility = View.VISIBLE
 
@@ -44,7 +95,7 @@ class MainActivity : BaseActivity() {
         }
 
         // Fetching data from Firebase
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener{
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 // Check if the snapshot has any data
@@ -57,7 +108,10 @@ class MainActivity : BaseActivity() {
                         category?.let {
                             list.add(it)
 
-                            Log.d("FirebaseData", "Name: ${it.Name}, ID: ${it.Id}, ImagePath: ${it.ImagePath}")
+                            Log.d(
+                                "FirebaseData",
+                                "Name: ${it.Name}, ID: ${it.Id}, ImagePath: ${it.ImagePath}"
+                            )
                         }
                     }
 
@@ -81,8 +135,4 @@ class MainActivity : BaseActivity() {
 
     }
 
-//    private fun initLocation() {
-//        DatabaseReference myref = database.getReference("location")
-//
-//    }
 }
