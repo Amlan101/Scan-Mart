@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/intro" />
+                android:src="@drawable/intro"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/introTxtView"
@@ -40,22 +41,13 @@
                 android:textSize="31sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/introTxtView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/intro_slogan"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/startBtn"
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/yellow_bg"
                 android:text="Get Started"
@@ -70,7 +62,7 @@
                 android:text="@string/intro_login"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="14dp"
                 android:textColor="@color/white"/>
 
         </LinearLayout>
