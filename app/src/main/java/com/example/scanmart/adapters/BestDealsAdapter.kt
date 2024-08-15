@@ -1,5 +1,6 @@
 package com.example.scanmart.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scanmart.R
 import com.bumptech.glide.Glide
+import com.example.scanmart.activities.DetailsActivity
 import com.example.scanmart.domains.ItemDomain
 
 class BestDealsAdapter: RecyclerView.Adapter<BestDealsAdapter.BestDealsViewHolder>() {
@@ -35,6 +37,13 @@ class BestDealsAdapter: RecyclerView.Adapter<BestDealsAdapter.BestDealsViewHolde
         Glide.with(holder.itemView.context)
             .load(current.ImagePath)
             .into(holder.img)
+
+        holder.itemView.setOnClickListener {
+            Intent(holder.itemView.context, DetailsActivity::class.java).apply {
+                putExtra("item", current)
+                holder.itemView.context.startActivity(this)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
