@@ -17,6 +17,7 @@ class DetailsActivity : BaseActivity() {
     private lateinit var binding: ActivityDetailsBinding
     private var item: ItemDomain? = null
     private var weight = 1
+    private lateinit var similarProductsAdapter: SimilarProductsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,7 @@ class DetailsActivity : BaseActivity() {
         binding.progressBarSimilarProducts.visibility = View.VISIBLE
 
         val list = ArrayList<ItemDomain>()
-        val  similarProductsAdapter = SimilarProductsAdapter()
+        similarProductsAdapter = SimilarProductsAdapter()
         binding.recyclerViewSimilarProducts.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = similarProductsAdapter
@@ -117,5 +118,11 @@ class DetailsActivity : BaseActivity() {
             Log.e("DetailsActivity", "Item data is missing")
             finish()
         }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        // Handle the back button press
+        finish()
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

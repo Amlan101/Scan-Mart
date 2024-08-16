@@ -1,5 +1,6 @@
 package com.example.scanmart.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,9 +23,13 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        initLocation()
         initCategoryList()
         initBestDealsList()
+
+        binding.fab.setOnClickListener {
+            val intent = Intent(this, ScannerActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
